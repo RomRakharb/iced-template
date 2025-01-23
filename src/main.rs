@@ -1,11 +1,11 @@
 use iced::widget::{button, column, text, Column};
 
 pub fn main() -> iced::Result {
-    iced::run("A cool counter", Counter::update, Counter::view)
+    iced::run("A cool counter", State::update, State::view)
 }
 
 #[derive(Default)]
-struct Counter {
+struct State {
     value: i64,
 }
 
@@ -15,7 +15,7 @@ enum Message {
     Decrement,
 }
 
-impl Counter {
+impl State {
     fn update(&mut self, message: Message) {
         match message {
             Message::Increment => {
