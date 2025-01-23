@@ -1,5 +1,5 @@
 use iced::{
-    widget::{button, column, container, text, Column},
+    widget::{button, column, container, text},
     Element,
     Length::Fill,
 };
@@ -48,7 +48,7 @@ mod test {
 
     #[test]
     fn it_counts_properly() {
-        let mut counter = Counter::default();
+        let mut counter = State::default();
 
         counter.update(Message::Increment);
         counter.update(Message::Increment);
