@@ -1,4 +1,8 @@
-use iced::widget::{button, column, text, Column};
+use iced::{
+    widget::{button, column, container, text, Column},
+    Element,
+    Length::Fill,
+};
 
 pub fn main() -> iced::Result {
     iced::run("A cool counter", State::update, State::view)
@@ -27,12 +31,14 @@ impl State {
         }
     }
 
-    fn view(&self) -> Column<Message> {
-        column![
+    fn view(&self) -> Element<Message> {
+        container(column![
             button("+").on_press(Message::Increment),
             text(self.value),
             button("-").on_press(Message::Decrement),
-        ]
+        ])
+        .center(Fill)
+        .into()
     }
 }
 
