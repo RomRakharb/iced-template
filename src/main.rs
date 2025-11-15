@@ -8,7 +8,7 @@ use iced::{
 
 fn main() -> iced::Result {
     iced::application(|| State::default(), State::update, State::view)
-        .title("iced template")
+        .title("{{project-name}}")
         .subscription(subscription)
         .run()
 }
