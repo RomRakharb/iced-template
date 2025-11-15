@@ -54,3 +54,26 @@ fn subscription(_state: &State) -> Subscription<Message> {
         _ => None,
     })
 }
+
+#[cfg(test)]
+mod test {
+    use super::State;
+    use iced_test::simulator;
+
+    #[test]
+    fn on_press() {
+        let mut state = State::default();
+        let mut ui = simulator(state.view());
+        let expected_result = [1, 2, 1, 0];
+        assert_eq!(state.count, 0);
+
+        let _ = ui.click("+");
+        let _ = ui.click("+");
+        let _ = ui.click("-");
+        let _ = ui.click("-");
+        for (i, message) in ui.into_messages().enumerate() {
+            let _ = state.update(message);
+            assert_eq!(state.count, expected_result[i]);
+        }
+    }
+}
